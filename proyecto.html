@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danzas Tradicionales de México</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff8e1;
+    }
+
+    #header {
+      background-color: #f9b208;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #4a2c00;
+    }
+
+    #seccion {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 10px;
+    }
+
+    .barra {
+      padding: 10px;
+      background: #fbe4a0;
+      border-radius: 10px;
+      margin: 10px;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+    }
+
+    #imagen-interactiva {
+      position: relative;
+      width: 400px;
+      height: 600px;
+      background-image: url('danzas.png');
+      background-size: cover;
+      background-position: center;
+      border: 2px solid #000;
+      border-radius: 10px;
+    }
+
+    .hotspot {
+      position: absolute;
+      width: 200px;
+      height: 190px;
+      background-color: rgba(25, 0, 0, 0.5);
+      border-radius: 50%;
+      cursor: pointer;
+      text-align: center;
+      font-weight: bold;
+      color: white;
+      line-height: 90px;
+      opacity: 0;
+    }
+
+    .contenido {
+      background: #fff3cd;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 10px;
+      width: 300px;
+      text-align: center;
+    }
+
+    #footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #ffd677;
+      border-radius: 10px;
+    }
+
+    .texto-rojo {
+      font-size: 30px;
+      font-weight: bold;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <h1>Conociendo las Danzas Tradicionales de México</h1>
+    <p>Haz clic en los puntos para aprender sobre cada danza.</p>
+  </div>
+
+  <div id="seccion">
+    <div class="barra">
+      <div id="imagen-interactiva">
+        <div id="hotspot1" class="hotspot" style="top: 0px; left: 0px;">1</div>
+        <div id="hotspot2" class="hotspot" style="top: 0px; left: 200px;">2</div>
+        <div id="hotspot3" class="hotspot" style="top: 250px; left: 0px;">3</div>
+        <div id="hotspot4" class="hotspot" style="top: 250px; left: 200px;">4</div>
+        <div id="hotspot5" class="hotspot" style="top: 460px; left: 100px;">5</div>
+      </div>
+    </div>
+
+    <div class="contenido">
+      <h2 id="titulo-info">Danzas Mexicanas</h2>
+      <p id="texto-info">Selecciona un punto en la imagen para ver su descripción.</p>
+      <img id="imagen-info" src="danzas.png" 
+           alt="Danza mexicana" width="100%" style="border-radius:10px;">
+    </div>
+  </div>
+
+  <div id="footer">
+    <p class="texto-rojo">¡Celebremos nuestras tradiciones!</p>
+  </div>
+
+  <script>
+    const info = {
+      hotspot1: {
+        titulo: "Danza de los Diablos",
+        texto: "Originaria de la Costa Chica (Guerrero y Oaxaca), se realiza con máscaras y trajes coloridos. Representa la resistencia cultural afrodescendiente.",
+        imagen: "diablos.png"
+      },
+      hotspot2: {
+        titulo: "Danza de los Voladores de Papantla",
+        texto: "Ritual totonaca donde cinco hombres suben a un palo alto. Cuatro giran descendiendo mientras uno toca música en la cima.",
+        imagen: "vp.png"
+      },
+      hotspot3: {
+        titulo: "Danza de los Viejitos",
+        texto: "Típica de Michoacán, representa la sabiduría de los ancianos y la alegría de la vida. Se caracteriza por máscaras, bastones y un zapateado alegre.",
+        imagen: "viejitos.png"
+      },
+      hotspot4: {
+        titulo: "Region de JALISCO",
+        texto: "El baile más emblemático de Jalisco es el Jarabe Tapatío, aunque el estado cuenta con una gran diversidad de danzas tradicionales. Estos bailes, acompañados de la música de mariachi, son una representación icónica de la identidad y la cultura mexicana.",
+        imagen: "jalisco.png"
+      },
+      hotspot5: {
+        titulo: "Danza de los Parachicos",
+        texto: "Se celebra en Chiapa de Corzo, Chiapas. Los bailarines usan máscaras talladas y sonajas, simbolizando alegría y gratitud.",
+        imagen: "xantolo.png"
+      }
+    };
+
+    Object.keys(info).forEach(id => {
+      document.getElementById(id).onclick = function() {
+        document.getElementById("titulo-info").textContent = info[id].titulo;
+        document.getElementById("texto-info").textContent = info[id].texto;
+        document.getElementById("imagen-info").setAttribute("src", info[id].imagen);
+      };
+    });
+  </script>
+</body>
+</html>
