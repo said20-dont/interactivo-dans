@@ -136,8 +136,15 @@
       </div>   
      
   </div>
-
+   <div id="footer">
+    <div id="instrucciones"></div>
+    <div id="boton-iniciar" style="width: 200px; height: 50px; background-color: green; color: white; font-weight: bold; text-align: center; line-height: 50px; border-radius: 10px; cursor: pointer; margin-bottom: 20px;">
+    Iniciar Prueba
+</div>
+  </div>
   <script>
+
+     document.getElementById
     const info = {
       hotspot1: {
         titulo: "Danza de los Diablos",
@@ -164,6 +171,7 @@
         texto: "Se celebra en Chiapa de Corzo, Chiapas. Los bailarines usan máscaras talladas y sonajas, simbolizando alegría y gratitud.",
         imagen: "xantolo.png"
       }
+
     };
 
     Object.keys(info).forEach(id => {
@@ -173,6 +181,51 @@
         document.getElementById("imagen-info").setAttribute("src", info[id].imagen);
       };
     });
+  
+    const preguntas = [
+      { pregunta: "¿Cómo se llama la danza originaria de la Costa Chica (Guerrero y Oaxaca) que representa la resistencia cultural afrodescendiente? (Danza de...)", respuesta: "diablos" },
+      { pregunta: "¿De qué estado es originaria la Danza de los Viejitos? (Pista: Es famosa por sus Nochebuenas).", respuesta: "michoacan" },
+      { pregunta: "¿Qué estado es la cuna del Jarabe Tapatío?", respuesta: "jalisco" },
+      { pregunta: "¿Cuál es el nombre del ritual totonaca donde los bailarines descienden girando desde un poste alto?", respuesta: "voladores" },
+      { pregunta: "¿Los Parachicos se celebran en Chiapa de Corzo, en el estado de...?", respuesta: "chiapas" },
+      { pregunta: "La Danza de los Viejitos se caracteriza por máscaras y un accesorio que ayuda a los ancianos a caminar. ¿Cuál es?", respuesta: "baston" },
+      { pregunta: "El Jarabe Tapatío es una danza de cortejo. ¿Qué personaje representa al hombre?", respuesta: "charro" },
+      { pregunta: "¿Cuántos hombres, incluyendo al músico, suben al palo en la Danza de los Voladores de Papantla? (Escribe el número en letra).", respuesta: "cinco" },
+      { pregunta: "¿Qué accesorio usan los bailarines en la Danza de los Parachicos que produce sonido al agitarse?", respuesta: "sonajas" },
+      { pregunta: "El traje de la mujer en el Jarabe Tapatío se llama 'china...'", respuesta: "poblana" }
+    ];
+
+    document.getElementById("boton-iniciar").onclick = function() {
+      let puntaje = 0;
+      alert("¡Bienvenido al Cuestionario de Danzas Tradicionales! Tienes 10 preguntas.");
+
+      preguntas.forEach((item, index) => {
+        let respuestaUsuario = prompt(`Pregunta ${index + 1}/10: ${item.pregunta}`);
+        if (respuestaUsuario) {
+          let respuestaLimpia = respuestaUsuario.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+          if (respuestaLimpia.includes(item.respuesta)) {
+            puntaje++;
+            alert(` ¡Correcto! Llevas ${puntaje} puntos.`);
+          } else {
+            alert(` Incorrecto. La respuesta correcta era: ${item.respuesta}.`);
+          }
+        } else {
+          alert("Respuesta omitida. Se contará como incorrecta.");
+        }
+      });
+
+      alert(` ¡Cuestionario Terminado! Tu puntaje final es: ${puntaje}/10`);
+      if(puntaje >= 1) {
+            alert("¡Felicidades! Has respondido correctamente todas las preguntas.");
+            //document.getElementById("fiesta").setAttribute("class", "visible");
+            document.getElementById("calif").textContent = puntaje + "/10";
+            document.getElementById("resultado").setAttribute("class", "visible");
+            
+        } else {
+            alert("Has respondido " + puntaje + " preguntas correctamente. ¡Sigue intentando!");
+
+        }
+    };
   </script>
 </body>
 </html>
