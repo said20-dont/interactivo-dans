@@ -64,6 +64,18 @@
       line-height: 90px;
       opacity: 0;
     }
+    #resultado {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .invisible{
+      opacity: 0;
+    }
+    .invisible{
+      opacity: 100%;
+    }
 
     .contenido {
       background: #fff3cd;
@@ -88,7 +100,7 @@
     }
   </style>
 </head>
-<body>
+<body> 
   <div id="header">
     <h1>Conociendo las Danzas Tradicionales de México</h1>
     <p>Haz clic en los puntos para aprender sobre cada danza.</p>
@@ -115,6 +127,14 @@
 
   <div id="footer">
     <p class="texto-rojo">¡Celebremos nuestras tradiciones!</p>
+  </div>
+  <div id="resultado"class="invisible">
+    <h2>Tu resultado:</h2>
+    <span id="calif" class="texto-rojo">0/0</span>
+        <img id="imagen-resultado" width="200px" src="gift.gif" />
+        <a href="formulario.html" class="boton-formulario">Libro de visitas</a>
+      </div>   
+     
   </div>
 
   <script>
